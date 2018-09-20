@@ -3,7 +3,7 @@
         COOKIE clicker
 
 ********************************/
-let cookieCount = 0;
+let cookieCount = 10000000;
 let cookieCounter = document.getElementById('cookieCounter');
 let cookieClicker = document.getElementById('cookieClicker');
 let throwErr = document.getElementById('error');
@@ -130,4 +130,44 @@ let autoFacilityStart = function() {
       cookieCount += facilityPower;
       refreshCookieCount();
     }, 1000);
+}
+/************************************
+
+            Delivery
+
+************************************/
+let deliveryPower = 2000;
+let deliveryPriceAmount = 10000000;
+let deliveryLevelNumber = 0;
+let buyDelivery = document.getElementById('buy-delivery');
+let DeliveryPrice = document.getElementById('delivery-price');
+let DeliveryLevel = document.getElementById('delivery-level');
+let DeliveryMultiple = document.getElementById('delivery-multiple');
+
+buyDelivery.addEventListener("click", function() {
+    if (cookieCount >= deliveryPriceAmount) {
+        autoDelivery = true;
+        autoDeliveryStart();
+        cookieCount -= deliveryPriceAmount;
+        deliveryLevelNumber += 1;
+        deliveryPower += (deliveryLevelNumber * 200);
+        deliveryPriceAmount = Math.floor(deliveryPriceAmount * 1.33);
+        deliveryMultiple.innerHTML = deliveryPower;
+        refreshDelivery();
+        refreshCookieCount();
+    } else {
+        throwGErr.innerHTML = 'You do not have enough cookies to complete this transaction';
+    }
+})
+
+let refreshDelivery = function() {
+    deliveryLevel.innerHTML = deliveryLevelNumber
+    deliveryPrice.innerHTML = deliveryPriceAmount;
+}
+
+let autoDeliveryStart = function() {
+  let deliveryInt = window.setInterval(function(){
+    cookieCount += deliveryPower;
+    refreshCookieCount();
+  }, 1000);
 }
