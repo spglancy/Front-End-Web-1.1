@@ -1,0 +1,78 @@
+body, html {
+    height: 100%;
+    width: 100%;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 5fr 65px 2fr;
+    grid-template-areas:
+                    "a b"
+                    "d ."
+                    "c c";
+}
+
+.currentItem > p {
+    font-size: 1.5em;
+}
+
+.shopTitle {
+    grid-area: d;
+    padding-left: 5%;
+    font-size: 2em;
+}
+
+.clicker {
+    grid-area: a;
+}
+
+.clicker > button {
+    border: none;
+    background-color: none;
+    width: 50%;
+    height: 70%;
+}
+
+.clicker > button:focus {
+    outline: none;
+}
+
+.clicker > button > img {
+    width: 100%;
+    height: 100%;
+}
+
+.shop {
+    grid-area: c;
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid black;
+}
+
+.current {
+    grid-area: b;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.itemContainer {
+    display: block;
+    width: 15%;
+}
+
+.itemContainer > button {
+    border: none;
+    background-color: none;
+    width: 80%;
+    height: 60%;
+}
+.itemContainer > button > img {
+    width: 100%;
+    height: 100%;
+}
